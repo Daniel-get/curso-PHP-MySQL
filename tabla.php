@@ -1,3 +1,10 @@
+<?php  
+include 'includes/conectaa.php';
+// consulta
+$consulta = "SELECT * FROM Usuarios";
+$guardar = $conecta->query($consulta);
+
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -23,6 +30,17 @@
 							<th class="text-center"> Genero </th>
 							<th class="text-center"> Opciones </th>
 						</thead>
+						<tbody>
+							<?php while($row = $guardar->fetch_assoc()){?>
+							<tr>
+								<td><?php echo $row['Nombre'] ?></td>
+								<td><?php echo $row['ApellidoP'] ?></td>
+								<td><?php echo $row['ApellidoM'] ?></td>
+								<td><?php echo $row['Id_Genero'] ?></td>
+								<td><a href="#">Editar </a>-<a href="#">Borrar</a></td>
+							</tr>
+						    <?php } ?>
+						</tbody>
 					</table>
 				</div>
 			</div>
